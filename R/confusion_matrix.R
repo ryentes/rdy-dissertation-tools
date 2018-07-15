@@ -1,10 +1,36 @@
+#' A confusion matrix object
+#' 
+#' This function defines a class of confusion matrix. It takes a prediction
+#' vector and an observed vector as inputs, and returns a list like object
+#' containing the confusion matrix and the relevant indices of accuracy already
+#' pre-computed.
+#' 
+#' @keywords confusion matrix
+#' @author Richard D. Yentes \email{ryentes@ncsu.edu}
+#' @param predictions a vector of predicted states (e.g. 0 or 1)
+#' @param observed a vector of observed or actual states
+#' @export
+
 confusion_matrix <- function(predictions, observed)
 {
   ## Compute the necessary indices of accuracy
-  tp <- sum(predictions == 1 & observed == 1) 
-  fp <- sum(predictions == 1 & observed == 0)
-  tn <- sum(predictions == 0 & observed == 0)
-  fn <- sum(predictions == 0 & observed == 1) 
+  tp <- sum(predictions == 1 & observed == 1)
+  fp <- sum(predictions == 1 & observed == 0) 
+  tn <- sum(predictions == 0 & observed == 0) 
+  fn <- sum(predictions == 0 & observed == 1)
+  tpr <- tp / sum(observed)
+  tnr <- tn / (1-sum(observed))
+  fpr <- fp / sum(observed)
+  fnr <- fn / (1-sum(observed))
+  tna <- tn / (1-sum(predicted))
+  tpa <- tp / sum(predicted)
+  fna <- fn / (1-sum(predicted))
+  fpa <- fp / sum(predicted)
+  informedness <- tpr-fpr
+  markedness <- tpa-fna
+  roc <- AUC::roc(predictions, observed)
+  auc <- plot(roc)
+  rocplot <- AUC::plot.AUC(roc)
   matrix <- table(predictions, observed)
   
   ## Load it up into the object
@@ -16,7 +42,16 @@ confusion_matrix <- function(predictions, observed)
       tp = tp,
       fp = fp,
       tn = tn,
-      fn = fn
+      fn = fn,
+      tna = tna,
+      tpa = tpa,
+      fna = fna,
+      fpa = fpa,
+      informedness = informedness,
+      markedness = markedness,
+      roc = roc,
+      auc = auc,
+      rocplot = rocplot
     ), class="confusion_matrix"
   )
   
