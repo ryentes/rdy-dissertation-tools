@@ -11,7 +11,7 @@
 #' @param observed a vector of observed or actual states
 #' @export
 
-confusion_matrix <- function(predictions, observed)
+confusionMatrix <- function(predictions, observed)
 {
   ## Compute the necessary indices of accuracy
   tp <- sum(predictions == 1 & observed == 1)
@@ -52,7 +52,7 @@ confusion_matrix <- function(predictions, observed)
       roc = roc,
       auc = auc,
       rocplot = rocplot
-    ), class="confusion_matrix"
+    ), class="confusionMatrix"
   )
   
   ## Set the name for the class
