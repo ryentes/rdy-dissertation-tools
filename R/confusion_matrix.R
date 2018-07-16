@@ -22,15 +22,15 @@ confusion_matrix <- function(predictions, observed)
   tnr <- tn / (1-sum(observed))
   fpr <- fp / sum(observed)
   fnr <- fn / (1-sum(observed))
-  tna <- tn / (1-sum(predicted))
-  tpa <- tp / sum(predicted)
-  fna <- fn / (1-sum(predicted))
-  fpa <- fp / sum(predicted)
+  tna <- tn / (1-sum(predictions))
+  tpa <- tp / sum(predictions)
+  fna <- fn / (1-sum(predictions))
+  fpa <- fp / sum(predictions)
   informedness <- tpr-fpr
   markedness <- tpa-fna
   roc <- AUC::roc(predictions, observed)
-  auc <- plot(roc)
-  rocplot <- AUC::plot.AUC(roc)
+  auc <- AUC::auc(roc)
+  rocplot <- graphics::plot(roc)
   matrix <- table(predictions, observed)
   
   ## Load it up into the object
