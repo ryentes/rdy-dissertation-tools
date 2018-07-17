@@ -11,13 +11,13 @@
 
 dispatchClassifierEval <- function(x, method) {
   longstring <- function(x) {
-    longstring_classifier(x)
+    longstringClassifier(x)
   }
   evenodd <- function(x) {
-    return(2*x)
+    evenoddClassifier(x)
   }
   mahad <- function(x) {
-    return(x/4)
+    mahadClassifier(x)
   }
   
   switch(method, 
