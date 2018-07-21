@@ -1,28 +1,32 @@
 # Still needs work:
-# 1. figure out what's going on with seeds
-# 2. probs going to pass paramaters through using dots
+# 1. separate all work into functions and call them in the respective methods (necessary for dependency inversion)
+# 2. definitely passing the parameters as dots
 # 3. Check that implementations are consistant with proposal doc
 
-simCareless <- function(x,floor=1,ceiling=7, type, seed) {
-  nItems <- length(x)-2
+simCareless <- function(x, type, seed, ...) {
+  nItems <- length(x)
   insert <- getRandomGaussian(mu=50, sigma=10, seed=seed)
   refract <- getRandomGaussian(mu=10, sigma=5, seed=seed)
   
-  longstring <- function(x, floor, ceiling) {
-    simLongstringCareless(x, floor, ceiling)
+  loginfo(glue('Careless record generated with insert at: {insert}, and refract: {refract}'), logger='dis2.l2')
+  
+  longstring <- function(x, floor, ceiling, seed) {
+    simLongstringCareless(x, ...)
   }
   
-  skewed <- function(x, floor, ceiling) {
-    simSkewedCareless(x, floor, ceiling)
+  skewed <- function(x, ...) {
+    simSkewedCareless(x, ...)
   }
   
-  centered <- function(x, floor, ceiling) {
-    simCenteredCareless(x, floor, ceiling)
+  centered <- function(x,  ...) {
+    simCenteredCareless(x, ...)
   }
+  
+  loginfo(paste('Dispatching simulated respondent of  type: ', type), logger='dis2.l2.')
   
   switch(type,
-         "longstring" = simLongstringCareless(x,floor, ceiling),
-         "skewed" = simSkewedCareless(x, floor, ceiling),
-         "centered" = simCenteredCareless(x, floor, ceiling)
+         "longstring" = simLongstringCareless(x, ...),
+         "skewed" = simSkewedCareless(x, ...),
+         "centered" = simCenteredCareless(x, ...)
   )
 }
