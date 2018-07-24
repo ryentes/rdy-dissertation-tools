@@ -6,6 +6,6 @@
 #' @param x a dataframe on which to test the classifier
 #' @export
 
-longstringClassifier <- function(x) {
+longstringClassifier <- function(x, ...) {
   return('blah blah blah')
 }

@@ -12,10 +12,9 @@
 #' @param seed a seed value to allow for replication
 #' @export
  
-getRandomGaussian <- function(mu, sigma, seed) {
-  set.seed(seed=seed)
+getRandomGaussian <- function(mu, sigma, max) {
   x <- 0
-  while(x < 1) {
+  while(x < 1 | x > max) {
     x <- round(rnorm(1, mean=mu, sd=sigma))
   }
   return(x)

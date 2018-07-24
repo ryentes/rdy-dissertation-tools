@@ -3,7 +3,7 @@
 # 2. definitely passing the parameters as dots
 # 3. Check that implementations are consistant with proposal doc
 
-simCareless <- function(x, type, seed, ...) {
+simCareless <- function(x, type, ...) {
   nItems <- length(x)
   insert <- getRandomGaussian(mu=50, sigma=10, seed=seed)
   refract <- getRandomGaussian(mu=10, sigma=5, seed=seed)
