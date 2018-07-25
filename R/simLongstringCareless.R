@@ -5,8 +5,13 @@
 #' @param floor the lowest possible value for each response
 #' @param ceiling the highest possible value for each response
 #' @export
+
 simLongstringCareless <- function(x, ...) {
+  nItems <- length(x)
+  insert <- getRandomGaussian(mu=50, sigma=10)
+  refract <- getRandomGaussian(mu=10, sigma=5)
+  
   repvalue <- sample(floor:ceiling,1)
-  x[insert:nitems] <- repvalue
+  x[insert:nItems] <- repvalue
   return(x)
 }

@@ -8,5 +8,5 @@
  
 simCenteredCareless <- function(x, ...) {
   args <- list(...)
-  return(glue("The primary arg is {args$wat}"))
+  return(glue::glue("The primary arg is {args$wat}"))
 }

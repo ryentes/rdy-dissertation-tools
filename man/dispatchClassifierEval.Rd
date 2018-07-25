@@ -4,7 +4,7 @@
 \alias{dispatchClassifierEval}
 \title{An interface for testing classification methods}
 \usage{
-dispatchClassifierEval(x, method)
+dispatchClassifierEval(x, method, ...)
 }
 \arguments{
 \item{x}{a dataframe on which to test the classifier}

@@ -12,7 +12,7 @@
 #' @param nchar the number of characters to retain from the factor labels
 #' @export
 dataModel <- function(factorCorrelations, itemParameters, nchar) {
-  a <- modelSlopes(ipar, colnames(factorCorrelations), nchar)
+  a <- modelSlopes(itemParameters, colnames(factorCorrelations), nchar)
   
   this.dataModel <- structure(
     list(

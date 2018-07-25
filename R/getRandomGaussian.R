@@ -9,13 +9,12 @@
 #' @author Richard D. Yentes \email{rdyentes@ncsu.edu}
 #' @param mu the mean of the distribution
 #' @param sigma the standard deviation of the distribution
-#' @param seed a seed value to allow for replication
 #' @export
  
 getRandomGaussian <- function(mu, sigma, max) {
   x <- 0
   while(x < 1 | x > max) {
-    x <- round(rnorm(1, mean=mu, sd=sigma))
+    x <- round(stats::rnorm(1, mean=mu, sd=sigma))
   }
   return(x)
 }
