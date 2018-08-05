@@ -6,6 +6,6 @@
 #' @export
 loadpackages <- function(x=c('dplyr','ggplot2', 'grid', 'gridExtra')) {
   suppressWarnings(
-    sapply(x, FUN=require, quietly=TRUE, character.only=TRUE, warn.conflicts=FALSE)
+    invisible(sapply(x, FUN=require, quietly=TRUE, character.only=TRUE, warn.conflicts=FALSE))
   )
 }
