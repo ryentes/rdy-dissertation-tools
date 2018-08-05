@@ -13,12 +13,14 @@
 #' @export
 dataModel <- function(factorCorrelations, itemParameters, nchar) {
   a <- modelSlopes(itemParameters, colnames(factorCorrelations), nchar)
+  d <- as.matrix(itemParameters[,2:ncol(itemParameters)])
   
   this.dataModel <- structure(
     list(
       factorCorrelations = factorCorrelations,
       itemParameters = itemParameters,
-      a = a
+      a = a,
+      d = d
     ), class = "dataModel"
   )
 }
