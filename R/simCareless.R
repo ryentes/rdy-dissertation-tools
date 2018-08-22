@@ -16,11 +16,14 @@ simCareless <- function(x, type, ...) {
   logstring <- paste0(args$logstring, 'simcareless')
   logging::loginfo(glue::glue('Dispatching a simulator for a {type} careless respondent'), logger=logstring)
   
+  cr <- x[,101:102]
+  x <- x[1:100]
+  
   longstring <- function(x, ...) {
-    simLongstringCareless(x, ...)
+    simLongstringCareless(x, labels,  ...)
   }
   
-  skewed <- function(x, ...) {
+  skewed <- function(x,  ...) {
     simSkewedCareless(x, ...)
   }
   
