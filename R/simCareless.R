@@ -30,7 +30,7 @@ simCareless <- function(x, type, ...) {
   
   logging::loginfo(glue::glue('Dispatching simulated respondent of  type: {type}'), logger='dis2.l2.')
   
-  switch(type,
+  switch(as.character(type),
          "longstring" = simLongstringCareless(x, ...),
          "skewed" = simSkewedCareless(x, ...),
          "centered" = simCenteredCareless(x, ...)
