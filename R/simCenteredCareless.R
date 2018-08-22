@@ -10,7 +10,7 @@ simCenteredCareless <- function(x, ...) {
   args <- list(...)
   nItems <- length(x)
   insert <- getRandomGaussian(mu=50, sigma=10, max=nItems)
-  span <- insert:nItems
+  span <- insert:nItems-2
   replaceSpan <- genCentered(length(span), floor=args$floor, ceiling=args$ceiling)
   x[span] <- replaceSpan
   return(x)
