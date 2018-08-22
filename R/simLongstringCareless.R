@@ -9,8 +9,8 @@
 simLongstringCareless <- function(x, ...) {
   args <- list(...)
   nItems <- length(x)
-  insert <- getRandomGaussian(mu=50, sigma=10)
-  refract <- getRandomGaussian(mu=10, sigma=5)
+  insert <- getRandomGaussian(mu=50, sigma=10, max=args$ceiling)
+  refract <- getRandomGaussian(mu=10, sigma=5, max=nItems)
   
   repvalue <- sample(args$floor:args$ceiling,1)
   x[insert:nItems] <- repvalue
