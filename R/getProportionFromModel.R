@@ -5,15 +5,14 @@
 #' 
 #' @keywords data model
 #' @author Richard D. Yentes \email{ryentes@ncsu.edu}
-#' @param mu the hypothetical mean occurance in a sample
-#' @param sigma the hypothetical standard deviation of occurance in a sample
+#' @param m a crModel object
 #' @param n the total number of respnodents in the proposed sample
 #' @export
-getProportionFromModel <- function(mu, sigma, n) {
+getProportionFromModel <- function(m, n) {
   x <- 0
   
   while (x < 1) {
-    x <- round(abs(rnorm(1, mu,sigma)*n))
+    x <- round(abs(rnorm(1, m$mu,m$sigma)*n))
   }
   
   return(x)

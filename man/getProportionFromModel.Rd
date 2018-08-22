@@ -4,12 +4,10 @@
 \alias{getProportionFromModel}
 \title{A careless responding model object}
 \usage{
-getProportionFromModel(mu, sigma, n)
+getProportionFromModel(m, n)
 }
 \arguments{
-\item{mu}{the hypothetical mean occurance in a sample}
-
-\item{sigma}{the hypothetical standard deviation of occurance in a sample}
+\item{m}{a crModel object}
 
 \item{n}{the total number of respnodents in the proposed sample}
 }
