@@ -12,9 +12,11 @@
 #' 
 
 simCareless <- function(x, type, ...) {
-  logging::loginfo(glue::glue('Careless record generated with insert at: {insert}, and refract: {refract}'), logger='dis2.l2')
+  args <- list(...)
+  logstring <- paste0(args$logstring, 'simcareless')
+  logging::loginfo(glue::glue('Dispatching a simulator for a {type} careless respondent'), logger=logstring)
   
-  longstring <- function(x, floor, ceiling, seed) {
+  longstring <- function(x, ...) {
     simLongstringCareless(x, ...)
   }
   

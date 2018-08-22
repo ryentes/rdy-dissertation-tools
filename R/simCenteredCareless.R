@@ -8,5 +8,10 @@
  
 simCenteredCareless <- function(x, ...) {
   args <- list(...)
-  return(glue::glue("The primary arg is {args$wat}"))
+  nItems <- length(x)
+  insert <- getRandomGaussian(mu=50, sigma=10)
+  span <- insert:nItems
+  replaceSpan <- genCentered(length(span), floor=args$floor, ceiling=args$ceiling)
+  x[span] <- replaceSpan
+  return(x)
 }
