@@ -11,7 +11,7 @@
 #' @export
 #' 
 
-simCareless <- function(x, type, ...) {
+simCareless <- function(x, ...) {
   args <- list(...)
   logstring <- paste0(args$logstring, 'simcareless')
   logging::loginfo(glue::glue('Dispatching a simulator for a {type} careless respondent'), logger=logstring)
