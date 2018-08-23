@@ -13,6 +13,6 @@ simLongstringCareless <- function(x, ...) {
   refract <- getRandomGaussian(mu=10, sigma=5, max=nItems)
   
   repvalue <- sample(args$floor:args$ceiling,1)
-  x[insert:nItems-2] <- repvalue
+  x[insert:nItems] <- repvalue
   return(x)
 }

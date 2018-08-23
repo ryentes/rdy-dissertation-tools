@@ -16,6 +16,9 @@ simCareless <- function(x, type, ...) {
   logstring <- paste0(args$logstring, 'simcareless')
   logging::loginfo(glue::glue('Dispatching a simulator for a {type} careless respondent'), logger=logstring)
   
+  cr <- x[101:102]
+  x <- x[1:100]
+  
   longstring <- function(x, ...) {
     simLongstringCareless(x, labels,  ...)
   }
@@ -30,7 +33,7 @@ simCareless <- function(x, type, ...) {
   
   logging::loginfo(glue::glue('Dispatching simulated respondent of  type: {type}'), logger='dis2.l2.')
   
-  switch(as.character(type),
+  switch(as.character(cr$crModel),
          "longstring" = simLongstringCareless(x, ...),
          "skewed" = simSkewedCareless(x, ...),
          "centered" = simCenteredCareless(x, ...)
