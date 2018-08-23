@@ -37,4 +37,6 @@ simCareless <- function(x, ...) {
          "skewed" = simSkewedCareless(x, ...),
          "centered" = simCenteredCareless(x, ...)
   )
+  
+  c(sim,cr)
 }
