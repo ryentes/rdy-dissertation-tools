@@ -32,13 +32,9 @@ simCareless <- function(x, ...) {
   
   logging::loginfo(glue::glue('Dispatching simulated respondent of  type: {cr["crModel"]}'), logger=logstring)
   
-  sim <- switch(as.character(cr['crModel']),
+  sim <- switch(cr['crModel'],
          "longstring" = simLongstringCareless(x, ...),
          "skewed" = simSkewedCareless(x, ...),
          "centered" = simCenteredCareless(x, ...)
   )
-  
-  sim <- t(c(as.data.frame(as.integer(sim)), as.data.frame(cr)))
-  
-  return(sim)
 }
