@@ -10,6 +10,7 @@
 #' @export
 
 dispatchClassifierEval <- function(x, method, ...) {
+  
   longstring <- function(x, ...) {
     longstringClassifier(x, ...)
   }

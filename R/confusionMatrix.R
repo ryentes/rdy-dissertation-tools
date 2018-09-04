@@ -28,7 +28,7 @@ confusionMatrix <- function(predictions, observed)
   fpa <- fp / sum(predictions)
   informedness <- tpr-fpr
   markedness <- tpa-fna
-  roc <- AUC::roc(predictions, observed)
+  roc <- AUC::roc(factor(predictions), factor(observed))
   auc <- AUC::auc(roc)
   rocplot <- graphics::plot(roc)
   matrix <- table(predictions, observed)
@@ -49,9 +49,7 @@ confusionMatrix <- function(predictions, observed)
       fpa = fpa,
       informedness = informedness,
       markedness = markedness,
-      roc = roc,
-      auc = auc,
-      rocplot = rocplot
+      auc = auc
     ), class="confusionMatrix"
   )
   

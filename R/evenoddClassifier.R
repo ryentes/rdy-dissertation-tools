@@ -7,5 +7,6 @@
 #' @export
 
 evenoddClassifier <- function(x, ...) {
-  return('blah blah blah')
+  args <- list(...)
+  return(paste(args$test, args$test2))
 }

@@ -7,5 +7,15 @@
 #' @export
 
 longstringClassifier <- function(x, ...) {
-  return('blah blah blah')
+  args <- list(...)
+  
+  df <- x[, 1:args$lastColumn]
+  truth <- x[, eval(args$lastColumn+1):ncol(x)]
+  ls <- careless::longstring(df, avg=FALSE)
+  xbar <- mean(ls)
+  SD <- sd(ls)
+    
+  predictions <- ifelse(ls >= xbar + (SD*args$cut), 1, 0)
+    
+  confusionMatrix(predictions, truth[,1])
 }
