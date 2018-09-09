@@ -4,14 +4,14 @@
 \alias{simCareless}
 \title{An interface for simulating careless respondents}
 \usage{
-simCareless(x, type, ...)
+simCareless(x, ...)
 }
 \arguments{
 \item{x}{a vector of item responses}
 
-\item{type}{the label, or type of careless responder}
-
 \item{...}{any additional parameters needed to simulate a respondent of that type}
+
+\item{type}{the label, or type of careless responder}
 }
 \description{
 Given a matrix of item parameters that are generated from mirt this function

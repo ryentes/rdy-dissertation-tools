@@ -21,11 +21,12 @@ dispatchRocer <- function(x, what, ...) {
   
   evenodd <- function(df, truth, ...) {
     args <- list(...)
+    eo <- careless::evenodd(df, args$factors)
+    sdRocer(eo, truth, from=args$from, to=args$to, by=args$by)
   }
   mahad <- function(df, truth, ...) {
     args <- list(...)
     mahD <- careless::mahad(df, flag=FALSE, plot=FALSE)
-    
     sdRocer(mahD, truth, from=args$from, to=args$to, by=args$by)
   }
   
