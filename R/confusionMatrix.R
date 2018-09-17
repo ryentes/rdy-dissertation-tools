@@ -43,7 +43,7 @@ confusionMatrix <- function(predictions, observed)
       fp = fp,
       tn = tn,
       fn = fn,
-      tpr = trp,
+      tpr = tpr,
       tnr = tnr,
       fpr = fpr,
       fnr = fnr,
