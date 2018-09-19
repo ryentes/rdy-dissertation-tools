@@ -27,5 +27,5 @@ sdRocer <- function(metric, truth, from, to, by) {
     resultMatrices[[i]] <- confusionMatrix(predictions[,i], truth)
   }
 
-  return(list(results=ResultMatrices, metric=metric))
+  return(list(results=resultMatrices, metric=metric))
 }
