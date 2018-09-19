@@ -30,7 +30,6 @@ confusionMatrix <- function(predictions, observed)
   markedness <- tpa-fna
   roc <- AUC::roc(factor(predictions), factor(observed))
   auc <- AUC::auc(roc)
-  rocplot <- graphics::plot(roc)
   matrix <- table(predictions, observed)
   
   ## Load it up into the object
