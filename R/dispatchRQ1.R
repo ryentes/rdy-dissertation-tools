@@ -9,30 +9,32 @@
 #' @param ... any additional arguments
 #' @export
 
-dispatchRocer <- function(x, what, ...) {
+dispatchRQ1 <- function(x, what, ...) {
   df <- x[,1:100]
   truth <- x[,101]
+  crModel <- x[,102]
   
-  longstring <- function(df, truth, ...) {
+  longstring <- function(df, truth, crModel, ...) {
     args <- list(...)
     ls <- careless::longstring(df)
-    sdRocer(ls, truth, from=args$from, to=args$to, by=args$by)
+    sdInquisition(ls, truth, crModel, ...)
   }
   
-  evenodd <- function(df, truth, ...) {
+  evenodd <- function(df, truth, crModel, ...) {
     args <- list(...)
     eo <- careless::evenodd(df, args$factors)
-    sdRocer(eo, truth, from=args$from, to=args$to, by=args$by)
+    sdInquisitionr(eo, truth, crModel,  ...)
   }
-  mahad <- function(df, truth, ...) {
+  
+  mahad <- function(df, truth, crModel, ...) {
     args <- list(...)
     mahD <- careless::mahad(df, flag=FALSE, plot=FALSE)
-    sdRocer(mahD, truth, from=args$from, to=args$to, by=args$by)
+    sdInquisition(mahD, truth, crModel, ...)
   }
   
   switch(what, 
-         "longstring" = longstring(df, truth, ...),
-         "evenodd" = evenodd(df, truth, ...),
-         "mahad" = mahad(df, truth,  ...)
+         "longstring" = longstring(df, truth, crModel, what, ...),
+         "evenodd" = evenodd(df, truth, crModel, what, ...),
+         "mahad" = mahad(df, truth, crModel, what,  ...)
   )
 }

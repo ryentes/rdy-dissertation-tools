@@ -3,15 +3,17 @@
 #' Takes a dataframe .
 #' @author Richard D. Yentes \email{rdyentes@ncsu.edu}
 #' @param metric a dataframe on which to test the classifier
+#' @param truth a binary vector of classification labels
+#' @param crModel a vector of labels for the CR model from which each CR was drawn
 #' @export
 
-sdRocer <- function(metric, truth, crModel, from, to, by, ...) {
+sdInquisition <- function(metric, truth, crModel, ...) {
   args <- list(...)
   xbar <- mean(metric)
   SD <- sd(metric)
   
   
-  range <- seq(from=from,to=to,by=by)
+  range <- seq(from=args$from,to=args$to,by=args$by)
   rangeLength <- length(range)
   
   predictions <- matrix(nrow=nrow(df), ncol=rangeLength)
@@ -30,10 +32,9 @@ sdRocer <- function(metric, truth, crModel, from, to, by, ...) {
   }
   
   informedness <- resultMatrices %>% purrr::map(~ .x[['informedness']]) %>%
-    cbind(informedness=.,range=range) %>% informedness(., args$i)
+    unlist() %>% informedness(range, .)
   
-  crmetric <- cbind.data.frame(metric, truth, crModel) %>% 
-    crmetric(., label=args$what, i=args$i)
+  crmetric <- crmetric(metric, truth, crModel)
 
   return(list(results=resultMatrices, range=range, metric=crmetric, informedness=informedness))
 }
