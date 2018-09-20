@@ -23,7 +23,7 @@ dispatchRQ1 <- function(x, what, ...) {
   evenodd <- function(df, truth, crModel, ...) {
     args <- list(...)
     eo <- careless::evenodd(df, args$factors)
-    sdInquisitionr(eo, truth, crModel,  ...)
+    sdInquisition(eo, truth, crModel,  ...)
   }
   
   mahad <- function(df, truth, crModel, ...) {
