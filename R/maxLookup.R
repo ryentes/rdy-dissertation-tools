@@ -10,6 +10,6 @@
 maxLookup <- function(x) {
   max <- max(x[,2])
   isMax <- which(x[,2] == max)
-  if (length(isMax) > 1) { return(x[isMax,1])}
+  if (length(isMax) > 1) { return(x[isMax[1],1])}
   else {return(x[isMax,1])}
 }
