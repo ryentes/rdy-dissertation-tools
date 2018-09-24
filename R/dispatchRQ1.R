@@ -20,9 +20,11 @@ dispatchRQ1 <- function(x, what, ...) {
     sdInquisition(ls, truth, crModel, ...)
   }
   
+  # We subtract the eo score from 0 so that it is in the same direction as
+  # the other indices
   evenodd <- function(df, truth, crModel, ...) {
     args <- list(...)
-    eo <- careless::evenodd(df, args$factors)
+    eo <- 0 - careless::evenodd(df, args$factors)
     sdInquisition(eo, truth, crModel,  ...)
   }
   
