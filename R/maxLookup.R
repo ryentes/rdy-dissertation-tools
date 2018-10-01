@@ -17,7 +17,7 @@ maxLookup <- function(x, right=FALSE) {
   if (length(isMax) > 1) { 
     if (right == FALSE) { 
       return(
-        cbind(
+        cbind.data.frame(
           x[first(isMax),],
           meanJ=meanJ,
           sdJ=sdJ
@@ -26,7 +26,7 @@ maxLookup <- function(x, right=FALSE) {
     }
     else { 
       return(
-        cbind(
+        cbind.data.frame(
           x[last(isMax),],
           meanJ=meanJ,
           sdJ=sdJ
@@ -36,7 +36,7 @@ maxLookup <- function(x, right=FALSE) {
   }
   else { 
     return(
-      cbind(
+      cbind.data.frame(
         x[isMax,],
         meanJ=meanJ,
         sdJ=sdJ

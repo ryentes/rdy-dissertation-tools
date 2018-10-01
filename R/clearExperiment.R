@@ -5,8 +5,7 @@
 #' @param hypothesis specifies the research question or hypothesis
 #' @export
 clearExperiment <- function(hypothesis) {
-  file.remove(glue::glue('logs/{hypothesis}/*'))
-  file.remove(glue::glue('artifacts/{hypothesis}/ls/*'))
-  file.remove(glue::glue('artifacts/{hypothesis}/eo/*'))
-  file.remove(glue::glue('artifacts/{hypothesis}/md/*'))
+  rmfiles(glue::glue('artifacts/{hypothesis}/ls/'))
+  rmfiles(glue::glue('artifacts/{hypothesis}/eo/'))
+  rmfiles(glue::glue('artifacts/{hypothesis}/md/'))
 }
