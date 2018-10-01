@@ -16,5 +16,5 @@ maxLookup <- function(x, right=FALSE) {
     if (right == FALSE) { return(x[first(isMax),1]) }
     else { return(x[last(isMax),1]) }
   }
-  else { return(x[isMax,1]) }
+  else { return(x[isMax,]) }
 }
