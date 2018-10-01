@@ -11,8 +11,8 @@
 #' @export
 maxLookup <- function(x, right=FALSE) {
   max <- max(x[,2])
-  meanJ <- mean(x)
-  sdJ <- sd(x)
+  meanJ <- mean(x[,2])
+  sdJ <- sd(x[,2])
   isMax <- which(x[,2] == max)
   if (length(isMax) > 1) { 
     if (right == FALSE) { 
