@@ -2,6 +2,7 @@
 
 S3method(plot,crmetric)
 S3method(plot,informedness)
+export(clearExperiment)
 export(confusionMatrix)
 export(crModel)
 export(crmetric)

@@ -11,10 +11,36 @@
 #' @export
 maxLookup <- function(x, right=FALSE) {
   max <- max(x[,2])
+  meanJ <- mean(x)
+  sdJ <- sd(x)
   isMax <- which(x[,2] == max)
   if (length(isMax) > 1) { 
-    if (right == FALSE) { return(x[first(isMax),1]) }
-    else { return(x[last(isMax),1]) }
+    if (right == FALSE) { 
+      return(
+        cbind(
+          x[first(isMax),],
+          meanJ=meanJ,
+          sdJ=sdJ
+        )
+      ) 
+    }
+    else { 
+      return(
+        cbind(
+          x[last(isMax),],
+          meanJ=meanJ,
+          sdJ=sdJ
+        )
+      ) 
+    }
   }
-  else { return(x[isMax,]) }
+  else { 
+    return(
+      cbind(
+        x[isMax,],
+        meanJ=meanJ,
+        sdJ=sdJ
+      )
+    )
+  }
 }
