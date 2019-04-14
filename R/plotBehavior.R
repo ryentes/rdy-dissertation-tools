@@ -8,9 +8,11 @@
 #' @param min the minmum of the interval over which to evaluate the behavior 
 #' @param max the maximum of the interval over which to evaluate the behavior
 
-plotBehavior <- function(x, method, min=-3, max=3) {
+plotBehavior <- function(x, method, ...) {
   lsRQ1 <- function(df, ...) {
-    ls <- dispatchRQ1(df, what='longstring', from=min, to=max, by=.1, i=i)
+    args <- list(...)
+    ls <- dispatchRQ1(df, what='longstring', from=args$min, to=args$max, by=.1, i=i)
+    plot(ls$informedness, i)
   }
   
   switch(method, 
