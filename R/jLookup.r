@@ -9,6 +9,6 @@
 #' @param i index at which to report informedness
 #' @export
 jLookup <- function(x, i) {
-  isI <- which(x[,2] == i)
-  return(x[i,2])
+  j = which(x[,1]==i)
+  return(x[j,2])
 }
