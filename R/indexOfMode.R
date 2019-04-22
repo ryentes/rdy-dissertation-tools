@@ -8,5 +8,5 @@
 #' @export
 indexOfMode <- function(x) {
   df <- x %>% group_by(.[,1]) %>% summarise(n = n()) %>% mutate(max=max(n))
-  x[which(is.equal(df$n, df$max)),1]
+  df[which(is.equal(df$n, df$max)),1]
 }
