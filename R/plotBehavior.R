@@ -20,7 +20,7 @@ plotBehavior <- function(x, method, ...) {
     args <- list(...)
     hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
     hexkey <- which(hexkey==-1)
-    rcdf <- rdydisstools::reverseCode(df[,1:100], hexkey, max=7)
+    rcdf <- rdydisstools::reverseCode(df, hexkey, max=7)
     md <- dispatchRQ1(rcdf, what="mahad", from=args$min, to=args$max, by= .1, i=i)
     plot(md$informedness, i)
     
@@ -30,7 +30,7 @@ plotBehavior <- function(x, method, ...) {
     args <- list(...)
     hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
     hexkey <- which(hexkey==-1)
-    rcdf <- rdydisstools::reverseCode(df[,1:100], hexkey, max=7)
+    rcdf <- rdydisstools::reverseCode(df, hexkey, max=7)
     eo <- dispatchRQ1(rcdf, what="evenodd", from=args$min, to=args$max, by= .1, i=i)
     plot(eo$informedness, i)
     
