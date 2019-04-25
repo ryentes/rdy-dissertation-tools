@@ -16,7 +16,7 @@ plotBehavior <- function(x, method, ...) {
     plot(ls$informedness, i)
   }
   
-  mdRQ1 <- function(x, method, ...) {
+  mdRQ1 <- function(df, method, ...) {
     args <- list(...)
     hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
     hexkey <- which(hexkey==-1)
@@ -26,7 +26,7 @@ plotBehavior <- function(x, method, ...) {
     
   }
   
-  eoRQ1 <- function(x, method, ...) {
+  eoRQ1 <- function(df, method, ...) {
     args <- list(...)
     hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
     hexkey <- which(hexkey==-1)
