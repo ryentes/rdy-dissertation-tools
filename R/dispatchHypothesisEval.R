@@ -9,21 +9,17 @@
 #' @param method a string specifying the classification method to evaluate
 #' @export
 
-dispatchClassifierEval <- function(x, method, ...) {
+dispatchHypothesisEval <- function(x, hypothesis, ...) {
   
-  longstring <- function(x, ...) {
-    longstringClassifier(x, ...)
+  hypothesis1 <- function(x, ...) {
+    evaluateHypothesis1(x, ...)
   }
-  evenodd <- function(x, ...) {
-    evenoddClassifier(x, ...)
-  }
-  mahad <- function(x, ...) {
-    mahadClassifier(x, ...)
+  hypothesis2 <- function(x, ...) {
+    evaluateHypothesis2(x, ...)
   }
   
-  switch(method, 
-         "longstring" = longstring(x, ...),
-         "evenodd" = evenodd(x, ...),
-         "mahad" = mahad(x, ...)
+  switch(hypothesis, 
+         "h1" = hypothesis1(x, ...),
+         "h2" = hypothesis2(x, ...)
   )
 }

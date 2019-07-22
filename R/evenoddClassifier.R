@@ -8,5 +8,14 @@
 
 evenoddClassifier <- function(x, ...) {
   args <- list(...)
-  return(paste(args$test, args$test2))
+  
+  df <- x[, 1:args$lastColumn]
+  truth <- x[, eval(args$lastColumn+1):ncol(x)]
+  eo <-  careless::evenodd(df, factors=rep(10,10))
+  xbar <- base::mean(eo)
+  SD <- stats::sd(eo)
+  
+  predictions <- ifelse(eo >= xbar + (SD*args$cut), 1, 0)
+  
+  confusionMatrix(predictions, truth[,1])
 }
