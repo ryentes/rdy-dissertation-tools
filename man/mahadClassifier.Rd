@@ -4,7 +4,7 @@
 \alias{mahadClassifier}
 \title{Implements the mahad classifier evaluation}
 \usage{
-mahadClassifier(x, ...)
+mahadClassifier(x, cut = 0.5)
 }
 \arguments{
 \item{x}{a dataframe on which to test the classifier}

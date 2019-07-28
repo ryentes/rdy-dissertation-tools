@@ -1,12 +1,8 @@
-#' An interface for testing classification methods
-#' 
-#' Takes a dataframe and method label as parameters, then evaluates the 
-#' performance of the specified classification method, returning a
-#' confusion_matrix object that contains the common classifier metrics.
+#' A hypothesis dispatcher
 #' 
 #' @author Richard D. Yentes \email{rdyentes@ncsu.edu}
-#' @param x a dataframe on which to test the classifier
-#' @param method a string specifying the classification method to evaluate
+#' @param x a dataframe for analysis
+#' @param ... any additional parameters
 #' @export
 
 dispatchHypothesisEval <- function(x, hypothesis, ...) {

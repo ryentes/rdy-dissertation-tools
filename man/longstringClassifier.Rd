@@ -4,7 +4,7 @@
 \alias{longstringClassifier}
 \title{Implements the longstring classifier evaluation}
 \usage{
-longstringClassifier(x, ...)
+longstringClassifier(x, truth, cut = 0.4)
 }
 \arguments{
 \item{x}{a dataframe on which to test the classifier}

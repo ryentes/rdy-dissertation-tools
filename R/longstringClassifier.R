@@ -6,16 +6,14 @@
 #' @param x a dataframe on which to test the classifier
 #' @export
 
-longstringClassifier <- function(x, ...) {
+longstringClassifier <- function(x, truth, cut=.4) {
   args <- list(...)
   
-  df <- x[, 1:args$lastColumn]
-  truth <- x[, eval(args$lastColumn+1):ncol(x)]
-  ls <- careless::longstring(df, avg=FALSE)
+  ls <- careless::longstring(x, avg=FALSE)
   xbar <- base::mean(ls)
   SD <- stats::sd(ls)
     
   predictions <- ifelse(ls >= xbar + (SD*args$cut), 1, 0)
     
-  confusionMatrix(predictions, truth[,1])
+  confusionMatrix(predictions, truth)
 }

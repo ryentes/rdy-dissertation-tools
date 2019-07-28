@@ -6,16 +6,14 @@
 #' @param x a dataframe on which to test the classifier
 #' @export
 
-mahadClassifier <- function(x, ...) {
+mahadClassifier <- function(x, cut=.5) {
   args <- list(...)
   
-  df <- x[, 1:args$lastColumn]
-  truth <- x[, eval(args$lastColumn+1):ncol(x)]
-  md <- careless::mahad(df, plot=FALSE)
+  md <- careless::mahad(x, plot=FALSE)
   xbar <- base::mean(md)
   SD <- stats::sd(md)
   
-  predictions <- ifelse(md > xbar + (SD*args$cut), 1, 0)
+  predictions <- ifelse(md > xbar + (SD*cut), 1, 0)
   
-  confusionMatrix(predictions, truth[,1])
+  return(predictions)
 }
