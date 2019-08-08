@@ -6,12 +6,12 @@
 #' @keywords confidence interval
 #' @author Richard D. Yentes \email{ryentes@ncsu.edu}
 #' @param b the point estimate for informedness
-#' @param n the number of samples in the simulation
+#' @param n the number of observations in the sample
 #' @param alpha the significance 
 #' @export
-informCI <- function(b, k, alpha=.05) {
+informCI <- function(b, n, alpha=.05) {
   sse_b <- (1-b)^2
-  se <- sqrt((sse_B/(k-1)))
+  se <- sqrt((sse_b/(n-1)))
   conf = (1-alpha) + (alpha/2)
   z = qnorm(conf)
   

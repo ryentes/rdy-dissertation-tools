@@ -1,4 +1,4 @@
-#' Evaluates Hypothesis 1 on a single dataset
+#' Evaluates Hypothesis 2 on a single dataset
 #' 
 #' Takes a dataframe and dots as parameters
 #' 
@@ -7,13 +7,13 @@
 #' @param ... other parameters as necessary
 #' @export
 
-evaluateHypothesis1 <- function(x, ...) {
+evaluateHypothesis2 <- function(x, ...) {
   args <- list(...)
   
   # Values set as outcomes of  RQ1
   # included as variables for convenience of other researchers
   LS_THRESHOLD = .4
-  OUT_THRESHOLD = .5
+  EO_THRESHOLD = .2
   
   hexkey <- read.csv('E:/dis/dissertation-dev/dissertation-dev/sourcedata/hexkey.csv', header=FALSE)[1:100]
   hexkey <- which(hexkey==-1)
@@ -22,8 +22,8 @@ evaluateHypothesis1 <- function(x, ...) {
   rcdf <- rdydisstools::reverseCode(df[,1:100], hexkey, max=7)
   truth <- x[, eval(args$lastColumn+1)]
   
-  out <- careless::mahad(rcdf, plot=FALSE)
-  outpredictions <- sdPredictor(out, OUT_THRESHOLD)
+  eo <- careless::evenodd(rcdf, factors=rep(10, 10), diag=FALSE)
+  eopredictions <- sdPredictor(eo, EO_THRESHOLD)
 
   
   #longstring
@@ -39,28 +39,28 @@ evaluateHypothesis1 <- function(x, ...) {
   df_lscut_truth <- x_lscut[, eval(args$lastColumn+1)]
   rcdf_lscut <- rdydisstools::reverseCode(df_lscut, hexkey, max=7)
   
-  # outlier computation following longstring
-  out2 <- careless::mahad(rcdf_lscut, plot=FALSE)
-  out2predictions <- sdPredictor(out2, OUT_THRESHOLD)
+  # even-odd computation following longstring
+  eo2 <- careless::evenodd(rcdf_lscut, factors=rep(10,10), diag=FALSE)
+  eo2predictions <- sdPredictor(eo2, EO_THRESHOLD)
   
-  outCM <- confusionMatrix(outpredictions, truth)
-  out2CM <- confusionMatrix(out2predictions, df_lscut_truth)
+  eoCM <- confusionMatrix(eopredictions, truth)
+  eo2CM <- confusionMatrix(eo2predictions, df_lscut_truth)
   
-  hc <- informCI(outCM$informedness, n=length(out))
-  ht <- informCI(out2CM$informedness, n=length(out2))
+  hc <- informCI(eoCM$informedness, n=length(eo))
+  ht <- informCI(eo2CM$informedness, n=length(eo2))
   
   hasOverlap  <- ht %overlaps% hc
-  moreInf <- out2CM$informedness > outCM$informedness
+  moreInf <- eo2CM$informedness > eoCM$informedness
   
   hypTest <- ifelse(moreInf & !hasOverlap, 1, 0)
 
   overlap <- DescTools::Overlap(hc, ht)
 
   return(c(
-            hc_b=outCM$informedness,
+            hc_b=eoCM$informedness,
             hc_lower=hc[1], 
             hc_upper=hc[2],
-            ht_b=out2CM$informedness, 
+            ht_b=eo2CM$informedness, 
             ht_lower=ht[1], 
             ht_upper=ht[2], 
             hypTest=hypTest, 

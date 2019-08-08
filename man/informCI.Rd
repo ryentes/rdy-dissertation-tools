@@ -4,14 +4,14 @@
 \alias{informCI}
 \title{A function to calculate the CI of informedness}
 \usage{
-informCI(b, k, alpha = 0.05)
+informCI(b, n, alpha = 0.05)
 }
 \arguments{
 \item{b}{the point estimate for informedness}
 
-\item{alpha}{the significance}
+\item{n}{the number of observations in the sample}
 
-\item{n}{the number of samples in the simulation}
+\item{alpha}{the significance}
 }
 \description{
 This function takes a point estimate of informedness, a simulation size,
