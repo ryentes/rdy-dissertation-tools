@@ -15,7 +15,7 @@ evaluateHypothesis1 <- function(x, ...) {
   LS_THRESHOLD = .4
   OUT_THRESHOLD = .5
   
-  hexkey <- read.csv('E:/dis/dissertation-dev/dissertation-dev/sourcedata/hexkey.csv', header=FALSE)[1:100]
+  hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
   hexkey <- which(hexkey==-1)
   
   df <- x[, 1:args$lastColumn]
