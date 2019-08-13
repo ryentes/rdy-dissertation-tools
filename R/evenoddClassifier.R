@@ -6,16 +6,13 @@
 #' @param x a dataframe on which to test the classifier
 #' @export
 
-evenoddClassifier <- function(x, ...) {
-  args <- list(...)
+evenoddClassifier <- function(x, truth, cut) {
   
-  df <- x[, 1:args$lastColumn]
-  truth <- x[, eval(args$lastColumn+1):ncol(x)]
-  eo <-  careless::evenodd(df, factors=rep(10,10))
+  eo <-  careless::evenodd(x, factors=rep(10,10))
   xbar <- base::mean(eo)
   SD <- stats::sd(eo)
   
-  predictions <- ifelse(eo >= xbar + (SD*args$cut), 1, 0)
+  predictions <- ifelse(eo >= xbar + (SD*cut), 1, 0)
   
-  confusionMatrix(predictions, truth[,1])
+  confusionMatrix(predictions, truth)
 }
