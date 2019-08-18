@@ -62,8 +62,8 @@ dispatchRQ2 <- function(x,  ...) {
   outsq_lsf_preds <- ifelse(base::sqrt(outsq^2) > 1, 1, 0)
   
   votes <- cbind(truth, ls_simul_preds, eo_simul_preds, out_simul_preds) %>% as.data.frame %>% mutate(eo_lsf_preds=0, out_lsf_preds=0, outsq_lsf_preds=0)
-  scores <- cbind(ls=l, eo=e,  out=o, outsq = base::sqrt(base::scale(o, center=TRUE, scale=TRUE)^2))
-  colnames(scores)[4] <- "outsq"
+  scores <- cbind(truth, ls=l, eo=e,  out=o, outsq = base::sqrt(base::scale(o, center=TRUE, scale=TRUE)^2))
+  colnames(scores)[5] <- "outsq"
   scores <- as.data.frame(scores)
            
   lsUncut <- which(ls_simul_preds == 0)
