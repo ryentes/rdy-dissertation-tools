@@ -8,6 +8,9 @@
 dispatchRQ2 <- function(x,  ...) {
   args <- list(...)
   
+  hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
+  hexkey <- which(hexkey==-1)
+  
   truth <- x[,eval(args$lastColumn+1)]
   rcx <- cbind(rdydisstools::reverseCode(x[,1:100], hexkey, max=7), x[,eval(args$lastColumn+1):ncol(x)])
   rcdf <- rcx[,1:args$lastColumn]
