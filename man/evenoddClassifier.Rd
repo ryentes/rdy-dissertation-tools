@@ -4,7 +4,7 @@
 \alias{evenoddClassifier}
 \title{Implements the evenodd classifier evaluation}
 \usage{
-evenoddClassifier(x, ...)
+evenoddClassifier(x, truth, cut)
 }
 \arguments{
 \item{x}{a dataframe on which to test the classifier}
