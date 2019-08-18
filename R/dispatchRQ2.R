@@ -8,8 +8,8 @@
 dispatchRQ2 <- function(x,  ...) {
   args <- list(...)
   
-  #hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
-  #hexkey <- which(hexkey==-1)
+  hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
+  hexkey <- which(hexkey==-1)
   
   truth <- x[,eval(args$lastColumn+1)]
   rcx <- cbind(rdydisstools::reverseCode(x[,1:100], hexkey, max=7), x[,eval(args$lastColumn+1):ncol(x)])
@@ -72,9 +72,8 @@ dispatchRQ2 <- function(x,  ...) {
   votes$out_lsf_preds[lsUncut] <- out_lsf_preds
   votes$outsq_lsf_preds[lsUncut] <- outsq_lsf_preds
   
-  i <- args$i
-  save(votes, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/votes/sim{i}.RData"))
-  save(scores, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/scores/sim{i}.RData"))
+  save(votes, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/votes/sim{args$i}.RData"))
+  save(scores, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/scores/sim{args$i}.RData"))
   
   vs <- voteScore(votes)
   
