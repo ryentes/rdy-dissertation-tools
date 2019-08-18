@@ -59,6 +59,7 @@ dispatchRQ2 <- function(x,  ...) {
   outsq_lsf_preds <- ifelse(base::sqrt(outsq^2) > 1, 1, 0)
   
   votes <- cbind(truth, ls_simul_preds, eo_simul_preds, out_simul_preds) %>% as.data.frame %>% mutate(eo_lsf_preds=0, out_lsf_preds=0, outsq_lsf_preds=0)
+  scores <- cbind(ls=l, eo=e,  out=o, outsq = base::sqrt(base::scale(o, center=TRUE, scale=TRUE)^2))
            
   lsUncut <- which(ls_simul_preds == 0)
   
@@ -66,6 +67,10 @@ dispatchRQ2 <- function(x,  ...) {
   votes$out_lsf_preds[lsUncut] <- out_lsf_preds
   votes$outsq_lsf_preds[lsUncut] <- outsq_lsf_preds
   
+  save(votes, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/votes/sim{args$i}.RData"))
+  save(scores, glue::glue("~/notebooks/dissertation/artifacts/rq2/scores/sim{args$i}.RData"))
   
-  return(votes)
+  vs <- voteScore(votes)
+  
+  return(vs)
 }
