@@ -70,7 +70,7 @@ dispatchRQ2 <- function(x,  ...) {
   votes$out_lsf_preds[lsUncut] <- out_lsf_preds
   votes$outsq_lsf_preds[lsUncut] <- outsq_lsf_preds
   
-  save(votes, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/votes/sim{args$i}.RData"))
+  #save(votes, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/votes/sim{args$i}.RData"))
   save(scores, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/scores/sim{args$i}.RData"))
   
   vs <- voteScore(votes)
