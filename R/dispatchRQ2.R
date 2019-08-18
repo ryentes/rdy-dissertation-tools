@@ -8,8 +8,8 @@
 dispatchRQ2 <- function(x,  ...) {
   args <- list(...)
   
-  hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
-  hexkey <- which(hexkey==-1)
+  #hexkey <- read.csv('~/notebooks/dissertation/sourcedata/hexkey.csv', header=FALSE)[1:100]
+  #hexkey <- which(hexkey==-1)
   
   truth <- x[,eval(args$lastColumn+1)]
   rcx <- cbind(rdydisstools::reverseCode(x[,1:100], hexkey, max=7), x[,eval(args$lastColumn+1):ncol(x)])
@@ -63,6 +63,8 @@ dispatchRQ2 <- function(x,  ...) {
   
   votes <- cbind(truth, ls_simul_preds, eo_simul_preds, out_simul_preds) %>% as.data.frame %>% mutate(eo_lsf_preds=0, out_lsf_preds=0, outsq_lsf_preds=0)
   scores <- cbind(ls=l, eo=e,  out=o, outsq = base::sqrt(base::scale(o, center=TRUE, scale=TRUE)^2))
+  colnames(scores)[4] <- "outsq"
+  scores <- as.data.frame(scores)
            
   lsUncut <- which(ls_simul_preds == 0)
   
@@ -71,9 +73,9 @@ dispatchRQ2 <- function(x,  ...) {
   votes$outsq_lsf_preds[lsUncut] <- outsq_lsf_preds
   
   #save(votes, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/votes/sim{args$i}.RData"))
-  save(scores, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/scores/sim{args$i}.RData"))
+  #save(scores, file=glue::glue("~/notebooks/dissertation/artifacts/rq2/scores/sim{args$i}.RData"))
   
   vs <- voteScore(votes)
   
-  return(vs)
+  return(scores)
 }
