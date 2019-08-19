@@ -128,7 +128,7 @@
                     any_flag_simul_info, any_flag_simul_rCareless, any_flag_simul_rCareful,
                     all_flags_info, all_flags_rCareless, all_flags_rCareful,
                     ls_or_agree_lsf_info, ls_or_agree_lsf_rCareless, ls_or_agree_lsf_rCareful,
-                    ls_or_agree_simul_info, ls_or_agree_simul_rCareless, ls_or_agree_lsf_rCareful,
+                    ls_or_agree_simul_info, ls_or_agree_simul_rCareless, ls_or_agree_simul_rCareful,
                     ls_or_out_lsf_info, ls_or_out_lsf_rCareless, ls_or_out_lsf_rCareful,
                     ls_or_eo_simul_info, ls_or_eo_simul_rCareless, ls_or_eo_simul_rCareful,
                     ls_or_outsq_info, ls_or_outsq_rCareless, ls_or_outsq_rCareful
