@@ -24,7 +24,7 @@
     ls_rCareful = nrow(ls_cleaned) - ls_rCareless
     ls_info = ls_simul$informedness
     ls_sensitivity = ls_simul$sensitivity
-    ls_specificity = ls_simul$sensitivity
+    ls_specificity = ls_simul$specificity
     
     # Even-odd (simultaneous)
     eo_simul = confusionMatrix(v$eo_simul_preds, truth)
