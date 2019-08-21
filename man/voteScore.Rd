@@ -10,7 +10,8 @@ voteScore(v)
 \item{v}{a dataframe on which to test the classifier}
 }
 \description{
-Takes a dataframe of votes as a parameter
+Takes a dataframe of votes as a parameter and returns metrics. for each
+method of scoring in my dissertation.
 }
 \author{
 Richard D. Yentes \email{rdyentes@ncsu.edu}

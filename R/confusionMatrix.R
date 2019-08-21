@@ -27,6 +27,8 @@ confusionMatrix <- function(predictions, observed)
   fna <- fn / (1-sum(predictions)) # no idea if these are correct.
   fpa <- fp / sum(predictions)
   informedness <- (tp/(tp+fn)) + (tn/(tn+fp)) - 1
+  sensitivity <- tp/(tp+fn)
+  specificity <- tn/(tn+fp)
   markedness <- tpa-fna
   roc <- AUC::roc(factor(predictions), factor(observed))
   auc <- AUC::auc(roc)
