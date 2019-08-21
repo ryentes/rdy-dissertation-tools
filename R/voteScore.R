@@ -64,7 +64,7 @@
     any_flag_simul_cleaned = v %>% filter(any_flag_simul_preds == 0)
     any_flag_simul_rCareless = sum(any_flag_simul_cleaned$truth)
     any_flag_simul_rCareful = nrow(any_flag_simul_cleaned) - any_flag_simul_rCareless
-    any_flag_simul_info = any_flag_simul$informedeness
+    any_flag_simul_info = any_flag_simul$informedness
     any_flag_simul_sensitivity = any_flag_simul$sensitivity
     any_flag_simul_specificity = any_flag_simul$specificity
     

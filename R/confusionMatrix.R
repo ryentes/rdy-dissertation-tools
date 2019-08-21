@@ -51,6 +51,8 @@ confusionMatrix <- function(predictions, observed)
       tna = tna,
       tpa = tpa,
       informedness = informedness,
+      sensitivity = sensitivity,
+      specificity = specificity,
       markedness = markedness,
       auc = auc
     ), class="confusionMatrix"
