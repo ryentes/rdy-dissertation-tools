@@ -42,7 +42,7 @@
     out_simul_rCareless = sum(out_simul_cleaned$truth)
     out_simul_rCareful = nrow(out_simul_cleaned) - out_simul_rCareless
     out_simul_info = out_simul$informedness
-    out_simul_sensitivity = out_simul$sensitvity
+    out_simul_sensitivity = out_simul$sensitivity
     out_simul_specificity = out_simul$specificity
     
     # Any flag - LS first
@@ -114,7 +114,7 @@
     ls_or_out_lsf_rCareless = sum(ls_or_out_lsf_cleaned$truth)
     ls_or_out_lsf_rCareful = nrow(ls_or_out_lsf_cleaned) - ls_or_out_lsf_rCareless
     ls_or_out_lsf_info = ls_or_out_lsf$informedness
-    ls_or_out_lsf_sensitivity = ls_or_out_lsf$sensitvity
+    ls_or_out_lsf_sensitivity = ls_or_out_lsf$sensitivity
     ls_or_out_lsf_specificity = ls_or_out_lsf$specificity
     
     # ls or even-odd
