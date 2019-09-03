@@ -133,7 +133,7 @@
     v = v %>% mutate(ls_or_outsq_preds = case_when(ls_simul_preds == 1 | outsq_lsf_preds == 1 ~ 1,
                                                    TRUE ~ 0))
                      
-    ls_or_outsq = confusionMatrix(v$ls_simul_preds, truth)
+    ls_or_outsq = confusionMatrix(v$ls_or_outsq_preds, truth)
     ls_or_outsq_cleaned = v %>% filter(ls_or_outsq_preds == 0)
     ls_or_outsq_rCareless = sum(ls_or_outsq_cleaned$truth)
     ls_or_outsq_rCareful = nrow(ls_or_outsq_cleaned) - ls_or_outsq_rCareless
