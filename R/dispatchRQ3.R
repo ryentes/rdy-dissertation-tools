@@ -13,7 +13,7 @@ dispatchRQ3 <- function(x, ...) {
   
   lpa_result = lpaClassifier(df)
   
-  if(!is.na(lpa_results$predictions)) {
+  if(!all(is.na(lpa_result$predictions))) {
     # Get prediction results
     
     lpa_preds = lpa_result$predictions
@@ -43,12 +43,12 @@ dispatchRQ3 <- function(x, ...) {
   else {
     
     lpa_metrics = c(
-      lpa_info = NULL,
-      lpa_sensitivity = NULL,
-      lpa_specificity = NULL,
-      lpa_rCareless_prop = NULL,
-      lpa_r_prop = NULL,
-      lpa_rCareful_prop = NULL
+      lpa_info = -999,
+      lpa_sensitivity = -999,
+      lpa_specificity = -999,
+      lpa_rCareless_prop = -999,
+      lpa_r_prop = -999,
+      lpa_rCareful_prop = -999
     )
   }
   
