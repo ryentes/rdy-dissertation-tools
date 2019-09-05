@@ -38,7 +38,9 @@ dispatchRQ3 <- function(x, ...) {
       lpa_rCareful_prop = lpa_rCareful / totalCareful
     )
     
-    save(list(lpa_result, lpa_metrics), file=glue::glue("~/notebooks/dissertation/artifacts/rq3/lparesults/sim{args$i}.RData"))
+    rq3 <- list(lpa_result, lpa_metrics)
+    
+    save(list='rq3', file=glue::glue("~/notebooks/dissertation/artifacts/rq3/lparesults/sim{args$i}.RData"))
   }
   else {
     
