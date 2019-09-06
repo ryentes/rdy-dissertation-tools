@@ -29,7 +29,7 @@ dispatchRQ3 <- function(x, ...) {
     
     
     # Metrics for reporting
-    lpa_metrics = c(
+    lpa_metrics = cbind(
       lpa_info = cm$informedness,
       lpa_sensitivity = cm$sensitivity,
       lpa_specificity = cm$specificity,
@@ -44,7 +44,7 @@ dispatchRQ3 <- function(x, ...) {
   }
   else {
     
-    lpa_metrics = c(
+    lpa_metrics = cbind(
       lpa_info = -999,
       lpa_sensitivity = -999,
       lpa_specificity = -999,
