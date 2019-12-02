@@ -22,7 +22,7 @@ evaluateHypothesis2 <- function(x, ...) {
   rcdf <- rdydisstools::reverseCode(df[,1:100], hexkey, max=7)
   truth <- x[, eval(args$lastColumn+1)]
   
-  eo <- careless::evenodd(rcdf, factors=rep(10, 10), diag=FALSE)
+  eo <- 0 - careless::evenodd(rcdf, factors=rep(10, 10), diag=FALSE)
   eopredictions <- sdPredictor(eo, EO_THRESHOLD)
 
   
@@ -40,7 +40,7 @@ evaluateHypothesis2 <- function(x, ...) {
   rcdf_lscut <- rdydisstools::reverseCode(df_lscut, hexkey, max=7)
   
   # even-odd computation following longstring
-  eo2 <- careless::evenodd(rcdf_lscut, factors=rep(10,10), diag=FALSE)
+  eo2 <- 0 - careless::evenodd(rcdf_lscut, factors=rep(10,10), diag=FALSE)
   eo2predictions <- sdPredictor(eo2, EO_THRESHOLD)
   
   eoCM <- confusionMatrix(eopredictions, truth)
