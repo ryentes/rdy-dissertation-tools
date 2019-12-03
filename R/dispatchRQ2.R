@@ -24,7 +24,7 @@ dispatchRQ2 <- function(x,  ...) {
   ls_simul_preds <- ifelse(l >= ls_xbar + (ls_SD*args$LS_CUT), 1, 0)
   
   # eo simultaneous
-  e <- careless::evenodd(rcdf, factors=rep(10,10))
+  e <- 0 - careless::evenodd(rcdf, factors=rep(10,10))
   eo_xbar <- base::mean(e)
   eo_SD <- stats::sd(e)
   eo_simul_preds <- ifelse(e >= eo_xbar + (eo_SD*args$EO_CUT), 1, 0)
@@ -46,7 +46,7 @@ dispatchRQ2 <- function(x,  ...) {
   rcdf_lscut <- rdydisstools::reverseCode(df_lscut, hexkey, max=7)
   
   
-  e2 <- careless::evenodd(rcdf_lscut, factors=rep(10,10))
+  e2 <- 0 - careless::evenodd(rcdf_lscut, factors=rep(10,10))
   eo2_xbar <- base::mean(e2)
   eo2_SD <- stats::sd(e2)
   eo_lsf_preds <- ifelse(e2 >= eo2_xbar + (eo2_SD*args$EO_CUT), 1, 0)
