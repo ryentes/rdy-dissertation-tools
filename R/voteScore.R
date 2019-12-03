@@ -145,8 +145,8 @@
     v = v %>% mutate(ls_or_eo_lsf_preds = case_when(ls_simul_preds == 1 | eo_lsf_preds == 1 ~ 1,
                                               TRUE ~ 0))
     ls_or_eo_lsf = confusionMatrix(v$ls_or_eo_lsf_preds, truth)
-    ls_or_eo_lsf_cleaned = v %>% filter(ls_or_eo_lsf == 0)
-    ls_or_eo_lsf_rCareless = sum(ls_or_eo_cleaned$truth)
+    ls_or_eo_lsf_cleaned = v %>% filter(ls_or_eo_lsf_preds == 0)
+    ls_or_eo_lsf_rCareless = sum(ls_or_eo_lsf_cleaned$truth)
     ls_or_eo_lsf_rCareful = nrow(ls_or_eo_lsf_cleaned) - ls_or_eo_lsf_rCareless
     ls_or_eo_lsf_info = ls_or_eo_lsf$informedness
     ls_or_eo_lsf_sensitivity = ls_or_eo_lsf$sensitivity
