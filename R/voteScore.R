@@ -141,6 +141,17 @@
     ls_or_outsq_sensitivity = ls_or_outsq$sensitivity
     ls_or_outsq_specificity = ls_or_outsq$specificity
     
+    #ls or even-odd lsf
+    v = v %>% mutate(ls_or_eo_lsf_preds = case_when(ls_simul_preds == 1 | eo_lsf_preds == 1 ~ 1,
+                                              TRUE ~ 0))
+    ls_or_eo_lsf = confusionMatrix(v$ls_or_eo_lsf_preds, truth)
+    ls_or_eo_lsf_cleaned = v %>% filter(ls_or_eo_lsf == 0)
+    ls_or_eo_lsf_rCareless = sum(ls_or_eo_cleaned$truth)
+    ls_or_eo_lsf_rCareful = nrow(ls_or_eo_lsf_cleaned) - ls_or_eo_lsf_rCareless
+    ls_or_eo_lsf_info = ls_or_eo_lsf$informedness
+    ls_or_eo_lsf_sensitivity = ls_or_eo_lsf$sensitivity
+    ls_or_eo_lsf_specificity = ls_or_eo_lsf$specificity
+    
     return(
             cbind(
                     totalCareless, totalCareful,
@@ -154,7 +165,8 @@
                     ls_or_agree_simul_info, ls_or_agree_simul_rCareless, ls_or_agree_simul_rCareful, ls_or_agree_simul_sensitivity, ls_or_agree_simul_specificity,
                     ls_or_out_lsf_info, ls_or_out_lsf_rCareless, ls_or_out_lsf_rCareful, ls_or_out_lsf_sensitivity, ls_or_out_lsf_specificity,
                     ls_or_eo_simul_info, ls_or_eo_simul_rCareless, ls_or_eo_simul_rCareful, ls_or_eo_simul_sensitivity,  ls_or_eo_simul_specificity,
-                    ls_or_outsq_info, ls_or_outsq_rCareless, ls_or_outsq_rCareful, ls_or_outsq_sensitivity, ls_or_outsq_specificity
+                    ls_or_outsq_info, ls_or_outsq_rCareless, ls_or_outsq_rCareful, ls_or_outsq_sensitivity, ls_or_outsq_specificity,
+                    ls_or_eo_lsf_info, ls_or_eo_lsf_rCareless, ls_or_eo_lsf_rCareful, ls_or_eo_lsf_sensitivity, ls_or_eo_lsf_specificity
                   )
           )
   }
